@@ -1,4 +1,4 @@
-##GIT
+GIT  
 
 In your browser, navigate to GitHub and log in to your account.  
 Create a new repository  
@@ -6,7 +6,7 @@ Copy the URL ending in .git.
 In the command line, navigate to the parent directory where you want to 
 git clone <the HTTPS or SSH URL ending in .git>  
 
-##OR
+OR  
 ```
 mkdir Name  
 cd Name  
