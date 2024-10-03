@@ -8,7 +8,7 @@ import dotenv from "dotenv"; // Для використання змінних �
 dotenv.config(); // Завантажує змінні з .env файлу
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const uri = process.env.MONGODB_URI; // URI MongoDB зберігається у змінних середовища
 
 let db; // Підключення до бази даних
