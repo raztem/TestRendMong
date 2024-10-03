@@ -20,7 +20,7 @@ const cacheDuration = 60000; // Час кешування (60 секунд)
 const allowedOrigins = [
   "http://localhost:3000", // Локальний сервер для розробки
   "http://127.0.0.1:5500", // Якщо ви використовуєте Live Server
-  "https://your-client-domain.com", // Домен клієнтської частини в продакшні
+  "https://testrendmong.onrender.com/", // Домен клієнтської частини в продакшні
   "https://another-allowed-domain.com", // Інший продакшн домен
 ];
 app.use(
