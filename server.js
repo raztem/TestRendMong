@@ -20,22 +20,22 @@ const cacheDuration = 60000; // Час кешування (60 секунд)
 const allowedOrigins = [
   "http://localhost:3001", // Локальний сервер для розробки
   "http://127.0.0.1:5500", // Якщо ви використовуєте Live Server
-  "https://your-client-domain.com", // Домен клієнтської частини в продакшні
+  "https://testrendmong.onrender.com", // Домен клієнтської частини в продакшні
   "https://another-allowed-domain.com", // Інший продакшн домен
 ];
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//   })
-// );
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
-app.use(cors());
+// app.use(cors());
 
 // Підключення до MongoDB (з перез'єднанням у випадку помилки)
 async function connectToMongo() {
@@ -47,15 +47,15 @@ async function connectToMongo() {
   //   tlsCAFile: "/etc/ssl/certs/ca-certificates.crt", // Сертифікати для перевірки
   // });
 
-  // const client = new MongoClient(uri, {
-  //   tls: true, // Використання TLS
-  //   tlsAllowInvalidCertificates: false, // Забороняємо некоректні сертифікати
-  // });
-
   const client = new MongoClient(uri, {
-    tls: true,
-    tlsAllowInvalidCertificates: true, //Це дозволить обійти перевірку SSL-сертифікатів, що може бути корисним у середовищі розробки. Проте для продакшену цей підхід не рекомендований через ризики безпеки.
+    tls: true, // Використання TLS
+    tlsAllowInvalidCertificates: false, // Забороняємо некоректні сертифікати
   });
+
+  // const client = new MongoClient(uri, {
+  //   tls: true,
+  //   tlsAllowInvalidCertificates: true, //Це дозволить обійти перевірку SSL-сертифікатів, що може бути корисним у середовищі розробки. Проте для продакшену цей підхід не рекомендований через ризики безпеки.
+  // });
 
   try {
     await client.connect();
