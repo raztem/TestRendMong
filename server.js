@@ -47,15 +47,15 @@ async function connectToMongo() {
   //   tlsCAFile: "/etc/ssl/certs/ca-certificates.crt", // Сертифікати для перевірки
   // });
 
-  const client = new MongoClient(uri, {
-    tls: true, // Використання TLS
-    tlsAllowInvalidCertificates: false, // Забороняємо некоректні сертифікати
-  });
-
   // const client = new MongoClient(uri, {
-  //   tls: true,
-  //   tlsAllowInvalidCertificates: true, //Це дозволить обійти перевірку SSL-сертифікатів, що може бути корисним у середовищі розробки. Проте для продакшену цей підхід не рекомендований через ризики безпеки.
+  //   tls: true, // Використання TLS
+  //   tlsAllowInvalidCertificates: false, // Забороняємо некоректні сертифікати
   // });
+
+  const client = new MongoClient(uri, {
+    tls: true,
+    tlsAllowInvalidCertificates: true, //Це дозволить обійти перевірку SSL-сертифікатів, що може бути корисним у середовищі розробки. Проте для продакшену цей підхід не рекомендований через ризики безпеки.
+  });
 
   try {
     await client.connect();
