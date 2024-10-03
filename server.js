@@ -18,9 +18,9 @@ const cacheDuration = 60000; // Час кешування (60 секунд)
 
 // Дозволяємо доступ тільки з певних доменів (вказати ваш клієнтський домен)
 const allowedOrigins = [
-  "http://localhost:3000", // Локальний сервер для розробки
+  "http://localhost:3001", // Локальний сервер для розробки
   "http://127.0.0.1:5500", // Якщо ви використовуєте Live Server
-  "https://testrendmong.onrender.com/", // Домен клієнтської частини в продакшні
+  "https://your-client-domain.com", // Домен клієнтської частини в продакшні
   "https://another-allowed-domain.com", // Інший продакшн домен
 ];
 app.use(
@@ -72,7 +72,7 @@ app.get("/api/news", async (req, res) => {
     console.log("Serving from MongoDB");
     res.json(articles);
   } catch (error) {
-    console.error("Error fetching data from MongoDB:", error);
+    console.error("Error fetching data from MongoDB:", error.message);
     res.status(500).json({ error: "Failed to fetch data" });
   }
 });
