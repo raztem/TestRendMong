@@ -9,7 +9,7 @@ dotenv.config(); // Завантажує змінні з .env файлу
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const uri = process.env.MONGO_URI; // URI MongoDB зберігається у змінних середовища
+const uri = process.env.MONGODB_URI; // URI MongoDB зберігається у змінних середовища
 
 let db; // Підключення до бази даних
 let cachedArticles = null; // Кешовані дані

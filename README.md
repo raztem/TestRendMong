@@ -20,7 +20,7 @@ git branch -M main
 git push -u origin main  
 ```
 ```
-  Common Git Commands:  
+Common Git Commands:  
 git status  
 git add .  
 git commit -m 'initial commit'  
