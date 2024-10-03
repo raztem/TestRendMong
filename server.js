@@ -21,6 +21,7 @@ const allowedOrigins = [
   "http://localhost:3001", // Локальний сервер для розробки
   "http://127.0.0.1:5500", // Якщо ви використовуєте Live Server
   "https://testrendmong.onrender.com", // Домен клієнтської частини в продакшні
+  "https://apinewstest.netlify.app",
   "https://another-allowed-domain.com", // Інший продакшн домен
 ];
 app.use(
