@@ -4,6 +4,8 @@ import express from "express";
 import { MongoClient } from "mongodb";
 import cors from "cors";
 import dotenv from "dotenv"; // Для використання змінних середовища
+const cron = require("node-cron");
+const https = require("https");
 
 dotenv.config(); // Завантажує змінні з .env файлу
 
@@ -104,3 +106,17 @@ app.get("/api/news", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+const keepAliveUrl = "https://testapinews.onrender.com/api/news";
+
+cron.schedule("* */15 * * *", () => {
+  https
+    .get(keepAliveUrl, (res) => {
+      console.log(`Status: ${res.statusCode}`);
+    })
+    .on("error", (error) => {
+      console.error(error);
+    });
+});
+
+console.log("Cron job started");
