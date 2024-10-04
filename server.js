@@ -26,17 +26,19 @@ const allowedOrigins = [
   "https://raztem.github.io",
   "https://another-allowed-domain.com", // Інший продакшн домен
 ];
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-  })
-);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error("Not allowed by CORS"));
+//       }
+//     },
+//   })
+// );
+
+app.use(cors({ origin: allowedOrigins }));
 
 // app.use(cors());
 
