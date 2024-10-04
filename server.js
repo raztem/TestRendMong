@@ -4,8 +4,8 @@ import express from "express";
 import { MongoClient } from "mongodb";
 import cors from "cors";
 import dotenv from "dotenv"; // Для використання змінних середовища
-const cron = require("node-cron");
-const https = require("https");
+import cron from "node-cron";
+import https from "https";
 
 dotenv.config(); // Завантажує змінні з .env файлу
 
