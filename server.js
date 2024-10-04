@@ -22,6 +22,7 @@ const allowedOrigins = [
   "http://127.0.0.1:5500", // Якщо ви використовуєте Live Server
   "https://testrendmong.onrender.com", // Домен клієнтської частини в продакшні
   "https://apinewstest.netlify.app",
+  "https://raztem.github.io/TestGitNews/",
   "https://another-allowed-domain.com", // Інший продакшн домен
 ];
 app.use(
