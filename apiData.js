@@ -12,7 +12,7 @@ async function fetchArticles() {
     const response = await fetch(url);
     const data = await response.json();
     articles = data.results;
-    console.log(articles);
+    // console.log(articles);
     return articles;
   } catch (error) {
     console.error("Error fetching data:", error);
