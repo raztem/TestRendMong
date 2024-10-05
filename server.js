@@ -1,5 +1,5 @@
 // (один раз при запуску сервера:)
-import { job } from "./cron";
+import { job } from "./cron.js";
 job.start();
 
 import express from "express";
