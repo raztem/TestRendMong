@@ -1,11 +1,11 @@
 // (один раз при запуску сервера:)
+import { job } from "./cron";
+job.start();
 
 import express from "express";
 import { MongoClient } from "mongodb";
 import cors from "cors";
 import dotenv from "dotenv"; // Для використання змінних середовища
-import cron from "node-cron";
-import https from "https";
 
 dotenv.config(); // Завантажує змінні з .env файлу
 
@@ -105,28 +105,4 @@ app.get("/api/news", async (req, res) => {
 // Запуск сервера
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-const keepAliveUrl = "https://testapinews.onrender.com/api/news";
-
-// cron.schedule("* */15 * * *", () => {
-//   https
-//     .get(keepAliveUrl, (res) => {
-//       console.log(`Status: ${res.statusCode}`);
-//     })
-//     .on("error", (error) => {
-//       console.error(error);
-//     });
-// });
-
-// console.log("Cron job started");
-
-cron.schedule("*/14 * * * *", () => {
-  https
-    .get(keepAliveUrl, (res) => {
-      console.log(`Ping to keep server alive: Status ${res.statusCode}`);
-    })
-    .on("error", (error) => {
-      console.error("Error keeping server alive:", error);
-    });
 });
