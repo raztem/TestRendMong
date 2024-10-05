@@ -1,6 +1,9 @@
 import fetch from "node-fetch";
+import dotenv from "dotenv"; // Для використання змінних середовища
 
-const url = "";
+dotenv.config(); // Завантажує змінні з .env файлу
+
+const url = API_NEWS;
 
 let articles = [];
 
@@ -17,8 +20,8 @@ async function fetchArticles() {
   }
 }
 
-fetchArticles();
+// fetchArticles();
 
-setInterval(fetchArticles, 3600000); // 3600000 мс = 1 година
+// setInterval(fetchArticles, 3600000); // 3600000 мс = 1 година
 
 export { fetchArticles };
