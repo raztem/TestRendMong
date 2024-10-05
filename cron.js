@@ -59,7 +59,7 @@ const job = new CronJob("*/14 * * * *", function () {
   });
 });
 
-export default { job };
+export { job };
 //....
 // import { job } from "./cron.js";
 // job.start();
