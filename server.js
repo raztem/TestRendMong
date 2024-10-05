@@ -109,14 +109,24 @@ app.listen(PORT, () => {
 
 const keepAliveUrl = "https://testapinews.onrender.com/api/news";
 
-cron.schedule("* */15 * * *", () => {
+// cron.schedule("* */15 * * *", () => {
+//   https
+//     .get(keepAliveUrl, (res) => {
+//       console.log(`Status: ${res.statusCode}`);
+//     })
+//     .on("error", (error) => {
+//       console.error(error);
+//     });
+// });
+
+// console.log("Cron job started");
+
+cron.schedule("*/14 * * * *", () => {
   https
     .get(keepAliveUrl, (res) => {
-      console.log(`Status: ${res.statusCode}`);
+      console.log(`Ping to keep server alive: Status ${res.statusCode}`);
     })
     .on("error", (error) => {
-      console.error(error);
+      console.error("Error keeping server alive:", error);
     });
 });
-
-console.log("Cron job started");
