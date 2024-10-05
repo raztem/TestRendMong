@@ -4,7 +4,7 @@ import dotenv from "dotenv"; // Для використання змінних �
 
 dotenv.config(); // Завантажує змінні з .env файлу
 
-const uri = MONGODB_URI;
+const uri = process.env.MONGODB_URI;
 
 async function run() {
   const client = new MongoClient(uri);
