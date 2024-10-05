@@ -3,7 +3,7 @@ import dotenv from "dotenv"; // Для використання змінних �
 
 dotenv.config(); // Завантажує змінні з .env файлу
 
-const url = API_NEWS;
+const url = process.env.API_NEWS;
 
 let articles = [];
 
