@@ -1,15 +1,16 @@
 // (один раз при запуску сервера:)
 
-import { run } from "./mongoDb.js";
-import { job } from "./cron.js";
-job.start();
-run();
-setInterval(run, 3600000); // 1 година
-
 import express from "express";
 import { MongoClient } from "mongodb";
 import cors from "cors";
 import dotenv from "dotenv"; // Для використання змінних середовища
+
+import { run } from "./mongoDb.js";
+import { job } from "./cron.js";
+
+job.start();
+run();
+setInterval(run, 3600000); // 1 година
 
 dotenv.config(); // Завантажує змінні з .env файлу
 
