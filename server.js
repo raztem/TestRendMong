@@ -1,6 +1,10 @@
 // (один раз при запуску сервера:)
+
+import { run } from "./mongoDb.js";
 import { job } from "./cron.js";
 job.start();
+run();
+setInterval(run, 3600000); // 1 година
 
 import express from "express";
 import { MongoClient } from "mongodb";
@@ -46,14 +50,6 @@ app.use(cors({ origin: allowedOrigins }));
 
 // Підключення до MongoDB (з перез'єднанням у випадку помилки)
 async function connectToMongo() {
-  // const client = new MongoClient(uri);
-
-  // const client = new MongoClient(uri, {
-  //   tls: true, // Використання TLS
-  //   tlsAllowInvalidCertificates: false, // Забороняємо некоректні сертифікати
-  //   tlsCAFile: "/etc/ssl/certs/ca-certificates.crt", // Сертифікати для перевірки
-  // });
-
   const client = new MongoClient(uri, {
     tls: true, // Використання TLS
     tlsAllowInvalidCertificates: false, // Забороняємо некоректні сертифікати
